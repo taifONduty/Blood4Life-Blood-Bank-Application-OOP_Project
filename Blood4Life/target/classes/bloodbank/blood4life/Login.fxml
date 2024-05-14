@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.charm.glisten.control.Icon?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -12,13 +13,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="943.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bloodbank.blood4life.LoginController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0" stylesheets="@Design.css">
          <children>
-            <AnchorPane fx:id="login_form" layoutX="8.0" layoutY="7.0" prefHeight="609.0" prefWidth="928.0" visible="false">
+            <AnchorPane fx:id="login_form" layoutX="8.0" layoutY="7.0" prefHeight="609.0" prefWidth="928.0">
                <children>
                   <Icon content="ACCOUNT_CIRCLE" layoutX="704.0" layoutY="43.0" prefHeight="68.0" prefWidth="86.0" visible="false" AnchorPane.bottomAnchor="498.0" AnchorPane.leftAnchor="704.0" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="43.0" />
                   <Label layoutX="697.0" layoutY="117.0" text="Sign In Account">
@@ -30,7 +32,7 @@
                   <PasswordField fx:id="login_password" layoutX="607.0" layoutY="199.0" prefHeight="36.0" prefWidth="276.0" promptText="Password" styleClass="textfield" stylesheets="@Design.css" />
                   <TextField fx:id="login_showPassword" layoutX="608.0" layoutY="199.0" prefHeight="36.0" prefWidth="276.0" promptText="Password" styleClass="textfield" stylesheets="@Design.css" visible="false" />
                   <CheckBox fx:id="login_selectShowPassword" layoutX="607.0" layoutY="244.0" mnemonicParsing="false" onAction="#showPassword" prefHeight="0.0" prefWidth="130.0" text="Show Password" />
-                  <Button fx:id="login_btn" layoutX="607.0" layoutY="305.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="276.0" styleClass="btn" stylesheets="@Design.css" text="Login" textFill="#b21616f7" />
+                  <Button fx:id="login_btn" layoutX="607.0" layoutY="305.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="276.0" styleClass="btn" stylesheets="@Design.css" text="Login" textFill="#b21616f7" />
                   <Label layoutX="691.0" layoutY="414.0" text="Register Account">
                      <font>
                         <Font name="Dubai Medium" size="15.0" />
@@ -71,7 +73,7 @@
                   <ComboBox fx:id="signup_sBG" layoutX="609.0" layoutY="353.0" prefHeight="26.0" prefWidth="276.0" promptText="Select Blood Group" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="forgot_form" layoutX="8.0" layoutY="9.0" prefHeight="609.0" prefWidth="928.0">
+            <AnchorPane fx:id="forgot_form" layoutX="8.0" layoutY="9.0" prefHeight="609.0" prefWidth="928.0" visible="false">
                <children>
                   <Icon content="LOCK" layoutX="704.0" layoutY="59.0" prefHeight="58.0" prefWidth="86.0" />
                   <Label layoutX="698.0" layoutY="117.0" text="Forget Password">
@@ -79,11 +81,142 @@
                         <Font name="Dubai Medium" size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="forgot_username" layoutX="607.0" layoutY="198.0" prefHeight="36.0" prefWidth="276.0" promptText="Username" styleClass="textfield" stylesheets="@Design.css" />
+                  <TextField fx:id="forgot_OTP" layoutX="608.0" layoutY="251.0" prefHeight="36.0" prefWidth="276.0" promptText="OTP" styleClass="textfield" stylesheets="@Design.css" />
                   <TextField fx:id="forgot_email" layoutX="607.0" layoutY="150.0" prefHeight="36.0" prefWidth="276.0" promptText="Email Address" styleClass="textfield" stylesheets="@Design.css" />
-                  <Button fx:id="forgot_proceedBtn" layoutX="608.0" layoutY="302.0" mnemonicParsing="false" onAction="#sendOTP" prefHeight="30.0" prefWidth="276.0" styleClass="btn" stylesheets="@Design.css" text="Proceed" textFill="#b21616f7" />
+                  <Button fx:id="forgot_proceedBtn" layoutX="608.0" layoutY="302.0" mnemonicParsing="false" onAction="#verifyOTP" prefHeight="30.0" prefWidth="276.0" styleClass="btn" stylesheets="@Design.css" text="Proceed" textFill="#b21616f7" />
                   <Button fx:id="forgot_backBtn" layoutX="609.0" layoutY="529.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="30.0" prefWidth="276.0" styleClass="btn" stylesheets="@Design.css" text="Back" />
-                  <TextField fx:id="forgot_username1" layoutX="608.0" layoutY="248.0" prefHeight="36.0" prefWidth="276.0" promptText="Change Password" styleClass="textfield" stylesheets="@Design.css" />
+                  <Button fx:id="forgot_sendOTP" layoutX="608.0" layoutY="205.0" mnemonicParsing="false" onAction="#sendOTP" prefHeight="30.0" prefWidth="276.0" styleClass="btn" text="Send OTP" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="homepage_form" layoutX="7.0" layoutY="7.0" prefHeight="625.0" prefWidth="943.0" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="homepage_findDonorNearYou" layoutX="364.0" layoutY="344.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="FInd Donor Near You" />
+                  <Button fx:id="homepage_feed" layoutX="656.0" layoutY="97.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Feed" />
+                  <Button fx:id="homepage_organizations" layoutX="364.0" layoutY="220.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Organizations">
+                     <font>
+                        <Font name="Bookman Old Style" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="homepage_DonateBlood" layoutX="656.0" layoutY="220.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Donate Blood" />
+                  <Button fx:id="homepage_Request" layoutX="364.0" layoutY="97.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Request For Blood" />
+                  <AnchorPane fx:id="slider" layoutY="63.0" prefHeight="562.0" prefWidth="215.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="728.0" AnchorPane.topAnchor="63.0">
+                     <children>
+                        <VBox prefHeight="562.0" prefWidth="215.0" style="-fx-background-color: #A91D3A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <JFXButton alignment="BASELINE_LEFT" prefHeight="54.0" prefWidth="215.0" styleClass="menubtn" stylesheets="@Design.css" text="Dashboard" textFill="#ff8f06">
+                                 <font>
+                                    <Font name="System Bold Italic" size="62.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@home.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" prefHeight="55.0" prefWidth="215.0" styleClass="menubtn" stylesheets="@Design.css" text="Be A Verfied Donor" textFill="#21b5f5">
+                                 <font>
+                                    <Font name="System Bold Italic" size="62.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@add.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" prefHeight="56.0" prefWidth="215.0" styleClass="menubtn" stylesheets="@Design.css" text="Download Certificate" textFill="#21b5f5">
+                                 <font>
+                                    <Font name="System Bold Italic" size="62.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@backup.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="215.0" styleClass="menubtn" stylesheets="@Design.css" text="Account Details" textFill="#21b5f5">
+                                 <font>
+                                    <Font name="System Bold Italic" size="62.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@data.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" prefHeight="45.0" prefWidth="215.0" styleClass="menubtn" stylesheets="@Design.css" text="About us" textFill="#21b5f5">
+                                 <font>
+                                    <Font name="Cambria Math" size="62.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@aboutus.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" prefHeight="45.0" prefWidth="215.0" styleClass="menubtn" stylesheets="@Design.css" text="Settings" textFill="#21b5f5">
+                                 <font>
+                                    <Font name="Cambria Math" size="62.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@setting.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" prefHeight="56.0" prefWidth="215.0" styleClass="menubtn" stylesheets="@Design.css" text="Exit Application" textFill="#21b5f5">
+                                 <font>
+                                    <Font name="Cambria Bold Italic" size="62.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@exit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children></VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="271.0" layoutY="-59.0" prefHeight="68.0" prefWidth="943.0" style="-fx-background-color: EEEEEE;" AnchorPane.bottomAnchor="557.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label fx:id="menu" layoutX="14.0" layoutY="23.0" text="Menu">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@burger.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="menuBack" layoutX="14.0" layoutY="23.0" text="Menu" textFill="#5b5353">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@burger.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

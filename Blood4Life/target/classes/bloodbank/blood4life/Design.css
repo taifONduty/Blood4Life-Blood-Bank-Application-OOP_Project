@@ -2,14 +2,14 @@ white-bg{
     -fx-background-color: #fff;
 }
 .btn{
-    -fx-background-color: linear-gradient(to bottom right,#dd0f0f,#ae2121);
+    -fx-background-color: linear-gradient(to bottom right,#A91D3A,#ae2121);
     -fx-cursor: hand;
     -fx-text-fill: #fff;
     -fx-font-size: 14px;
-    -fx-font-family: Arial;
+    -fx-font-family: "Arial";
 }
 .btn:hover{
-    -fx-background-color: linear-gradient(to bottom right,#c23a3a,#b21616); ;
+    -fx-background-color: linear-gradient(to bottom right,#c23a3a,#A92D4F); ;
 }
 .textfield{
     -fx-border-color: #000;
@@ -18,4 +18,15 @@ white-bg{
 .textfield:focused{
     -fx-border-color: linear-gradient(to bottom right,#dd0f0f,#ae2121);
     -fx-border-width: .8px;
+}
+
+.menubtn{
+    -fx-background-color: #A91D3A;
+    -fx-cursor: hand;
+    -fx-text-fill: #867979;
+    -fx-font-size: 14px;
+    -fx-font-family: "Roboto Bold";
+}
+.menubtn:hover{
+    -fx-background-color: linear-gradient(to bottom right,#c23a3a,#A92D4F); ;
 }
