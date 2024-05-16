@@ -8,6 +8,7 @@ module bloodbank.blood4life {
     requires java.sql;
     requires java.desktop;
     requires java.mail;
+    requires jdk.jsobject;
 
     opens bloodbank.blood4life to javafx.fxml;
     exports bloodbank.blood4life;

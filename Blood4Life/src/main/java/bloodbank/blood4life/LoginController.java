@@ -2,12 +2,13 @@ package bloodbank.blood4life;
 
 import java.net.URL;
 import java.sql.*;
-//import java.sql.Date;
 import java.util.*;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
+
+import javafx.animation.TranslateTransition;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,13 +19,27 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.transform.Translate;
+import javafx.util.Duration;
+
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+//import javafx.scene.web.WebEngine;
+//import javafx.scene.web.WebView;
+import netscape.javascript.JSObject;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
+    @FXML
+    private TextField forgot_OTP;
+
     @FXML
     private Button forgot_backBtn;
 
@@ -38,7 +53,28 @@ public class LoginController implements Initializable {
     private Button forgot_proceedBtn;
 
     @FXML
-    private TextField forgot_username;
+    private Button forgot_sendOTP;
+
+    @FXML
+    private Button homepage_DonateBlood;
+
+    @FXML
+    private Button homepage_Request;
+
+    @FXML
+    private Button homepage_feed;
+
+    @FXML
+    private Button homepage_findDonorNearYou;
+
+    @FXML
+    private AnchorPane homepage_form;
+
+    @FXML
+    private Button homepage_organizations;
+
+    @FXML
+    private ImageView imageForm;
 
     @FXML
     private Button login_btn;
@@ -62,10 +98,19 @@ public class LoginController implements Initializable {
     private TextField login_showPassword;
 
     @FXML
+    private ImageView login_user;
+
+    @FXML
     private TextField login_username;
 
     @FXML
     private AnchorPane main_form;
+
+    @FXML
+    private Label menu;
+
+    @FXML
+    private Label menuBack;
 
     @FXML
     private Button signup_btn;
@@ -92,15 +137,13 @@ public class LoginController implements Initializable {
     private TextField signup_username;
 
     @FXML
-    private ImageView imageForm;
-    @FXML
-    private ImageView login_user;
-
+    private AnchorPane slider;
 
     private Connection con;
     private PreparedStatement prepare;
     private ResultSet rs;
     private Statement st;
+    private String otp;
 
     public Connection connectDB() {
         Connection con = null;
@@ -137,6 +180,10 @@ public class LoginController implements Initializable {
                 rs = prepare.executeQuery();
                 if(rs.next()) {
                     alert.successMessage("Login Successful");
+                    login_form.setVisible(false);
+                    forgot_form.setVisible(false);
+                    signup_form.setVisible(false);
+                    homepage_form.setVisible(true);
                 }else{
                     alert.errorMessage("Incorrect Username or Password");
                 }
@@ -227,8 +274,15 @@ public class LoginController implements Initializable {
         return otp.toString();
     }
 
-    public void sendOTP(){
-        String otp = generateOTP();
+    public void sendOTP() {
+        alertMessage alert = new alertMessage();
+        String recipientEmail = forgot_email.getText();
+        if (recipientEmail.isEmpty()) {
+            alert.errorMessage("Please enter email");
+        }else if (!recipientEmail.endsWith("@gmail.com")) {
+            alert.errorMessage("Please enter a valid gmail address");}
+        else{
+        otp = generateOTP();
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -242,15 +296,13 @@ public class LoginController implements Initializable {
                     }
                 });
         try {
-            // Compose message
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("teratura961@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse("ahmedtaif437@gmail.com"));
-            message.setSubject("OTP Verification");
+                    InternetAddress.parse(recipientEmail));
+            message.setSubject("Blood4Life Email Verification");
             message.setText("Your OTP is: " + otp);
 
-            // Send message
             Transport.send(message);
 
             System.out.println("Email sent successfully!");
@@ -258,6 +310,26 @@ public class LoginController implements Initializable {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+
+        }
+
+    }
+
+    public void verifyOTP(){
+        alertMessage alert = new alertMessage();
+        if(forgot_OTP.getText().isEmpty()) {
+            alert.errorMessage("Please enter your OTP");
+        }else if(forgot_OTP.getText().equals(otp)){
+            alert.successMessage("OTP verified");
+            forgotClearFields();
+        }else{
+            alert.errorMessage("OTP does not match");
+        }
+    }
+
+    public void forgotClearFields(){
+        forgot_email.setText("");
+        forgot_OTP.setText("");
     }
 
     public void signupClearFields(){
@@ -306,9 +378,45 @@ public class LoginController implements Initializable {
         signup_sBG.setItems(ListData);
 
     }
+    private boolean isMenuVisible = false;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     //TOdo
         sBG();
+        slider.setTranslateX(-215); // Hide the slider initially
+
+        menu.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            if (!isMenuVisible) {
+                System.out.println("Heda");// If menu is not visible, slide out from the left
+                slide.setToX(0);
+                menu.setVisible(false);
+                menuBack.setVisible(true);
+                isMenuVisible = true;
+            } else { // If menu is visible, slide in to the left
+                slide.setToX(-215);
+                menu.setVisible(true);
+                menuBack.setVisible(false);
+                isMenuVisible = false;
+            }
+            slide.play();
+        });
+
+        menuBack.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(-215); // Slide out to the left
+            slide.play();
+
+            menu.setVisible(true);
+            menuBack.setVisible(false);
+            isMenuVisible = false;
+        });
+
     }
 }
