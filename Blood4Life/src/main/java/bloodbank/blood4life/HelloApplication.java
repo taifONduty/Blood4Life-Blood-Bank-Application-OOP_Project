@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         LoginController loginController = new LoginController();
-        Connection con = loginController.connectDB();
+        Connection con = Core.User.connectDB();
         launch(args);
 
     }

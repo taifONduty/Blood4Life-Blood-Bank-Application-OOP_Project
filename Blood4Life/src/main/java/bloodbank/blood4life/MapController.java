@@ -1,5 +1,7 @@
 package bloodbank.blood4life;
 
+import Core.User;
+import Core.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -33,6 +35,9 @@ public class MapController {
         stage.show();
     }
 
-
+    public void initialize() {
+        String userEmail = UserSession.getInstance().getUserEmail();
+        System.out.println("VerifiedDonor initialized with user email: " + userEmail);
+    }
 
 }

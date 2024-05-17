@@ -61,7 +61,8 @@ public class RequestBloodController {
         bloodRequestService.addBloodRequest(request);
 
         try {
-            con = LoginController.connectDB();
+//            con = LoginController.connectDB();
+            con = Core.User.connectDB();
             String insertData = "INSERT INTO feed1 " + "(name, blood, hospital, contact) " + "VALUES (?, ?, ?, ?)";
 
             prepare = con.prepareStatement(insertData);
