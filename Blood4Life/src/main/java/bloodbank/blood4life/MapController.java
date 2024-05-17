@@ -21,6 +21,7 @@ public class MapController {
 
     @FXML
     private VBox map_show;
+
     public void switchToHome(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         Parent root = loader.load();
@@ -31,5 +32,7 @@ public class MapController {
         stage.setScene(scene);
         stage.show();
     }
+
+
 
 }

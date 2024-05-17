@@ -20,7 +20,7 @@
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0" stylesheets="@Design.css">
          <children>
-            <AnchorPane fx:id="login_form" layoutX="8.0" layoutY="7.0" prefHeight="609.0" prefWidth="928.0" visible="false">
+            <AnchorPane fx:id="login_form" layoutX="8.0" layoutY="7.0" prefHeight="609.0" prefWidth="928.0" style="-fx-background-color: #1e1d1c;" visible="false">
                <children>
                   <Icon content="ACCOUNT_CIRCLE" layoutX="704.0" layoutY="43.0" prefHeight="68.0" prefWidth="86.0" visible="false" AnchorPane.bottomAnchor="498.0" AnchorPane.leftAnchor="704.0" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="43.0" />
                   <Label layoutX="697.0" layoutY="117.0" text="Sign In Account">
@@ -51,7 +51,7 @@
                      </image>
                   </ImageView>
                </children></AnchorPane>
-            <AnchorPane fx:id="signup_form" layoutX="8.0" layoutY="7.0" prefHeight="609.0" prefWidth="928.0" visible="false">
+            <AnchorPane fx:id="signup_form" layoutX="8.0" layoutY="7.0" prefHeight="609.0" prefWidth="928.0" style="-fx-background-color: #1e1d1c;" visible="false">
                <children>
                   <Icon content="ADD" layoutX="704.0" layoutY="59.0" prefHeight="58.0" prefWidth="86.0" />
                   <Label layoutX="697.0" layoutY="117.0" text="Sign Up Account">
@@ -73,7 +73,7 @@
                   <ComboBox fx:id="signup_sBG" layoutX="609.0" layoutY="353.0" prefHeight="26.0" prefWidth="276.0" promptText="Select Blood Group" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="forgot_form" layoutX="8.0" layoutY="9.0" prefHeight="609.0" prefWidth="928.0" visible="false">
+            <AnchorPane fx:id="forgot_form" layoutX="8.0" layoutY="9.0" prefHeight="609.0" prefWidth="928.0" style="-fx-background-color: #1e1d1c;" visible="false">
                <children>
                   <Icon content="LOCK" layoutX="704.0" layoutY="59.0" prefHeight="58.0" prefWidth="86.0" />
                   <Label layoutX="698.0" layoutY="117.0" text="Forget Password">
@@ -88,19 +88,19 @@
                   <Button fx:id="forgot_sendOTP" layoutX="608.0" layoutY="205.0" mnemonicParsing="false" onAction="#sendOTP" prefHeight="30.0" prefWidth="276.0" styleClass="btn" text="Send OTP" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="homepage_form" layoutX="7.0" layoutY="7.0" prefHeight="625.0" prefWidth="943.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="homepage_form" layoutX="7.0" layoutY="7.0" prefHeight="625.0" prefWidth="943.0" style="-fx-background-color: #1e1d1c;" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Button fx:id="homepage_findDonorNearYou" layoutX="364.0" layoutY="344.0" mnemonicParsing="false" onAction="#switchToMap" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="FInd Donor Near You" />
-                  <Button fx:id="homepage_feed" layoutX="656.0" layoutY="97.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Feed" />
+                  <Button fx:id="homepage_feed" layoutX="656.0" layoutY="97.0" mnemonicParsing="false" onAction="#switchToFeed" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Feed" />
                   <Button fx:id="homepage_organizations" layoutX="364.0" layoutY="220.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Organizations">
                      <font>
                         <Font name="Bookman Old Style" size="12.0" />
                      </font></Button>
                   <Button fx:id="homepage_DonateBlood" layoutX="656.0" layoutY="220.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Donate Blood" />
-                  <Button fx:id="homepage_Request" layoutX="364.0" layoutY="97.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Request For Blood" />
+                  <Button fx:id="homepage_Request" layoutX="364.0" layoutY="97.0" mnemonicParsing="false" onAction="#switchToRequestBlood" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Request For Blood" />
                   <AnchorPane fx:id="slider" layoutY="63.0" prefHeight="562.0" prefWidth="215.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="728.0" AnchorPane.topAnchor="63.0">
                      <children>
-                        <VBox prefHeight="562.0" prefWidth="215.0" style="-fx-background-color: #A91D3A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <VBox prefHeight="562.0" prefWidth="215.0" style="-fx-background-color: #d9343a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
                               <JFXButton alignment="BASELINE_LEFT" prefHeight="54.0" prefWidth="215.0" styleClass="menubtn" stylesheets="@Design.css" text="Dashboard" textFill="#ff8f06">
                                  <font>
@@ -189,9 +189,9 @@
                            </children></VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="271.0" layoutY="-59.0" prefHeight="68.0" prefWidth="943.0" style="-fx-background-color: EEEEEE;" AnchorPane.bottomAnchor="557.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane layoutX="271.0" layoutY="-59.0" prefHeight="68.0" prefWidth="943.0" style="-fx-background-color: #262626;" AnchorPane.bottomAnchor="557.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label fx:id="menu" layoutX="14.0" layoutY="23.0" text="Menu">
+                        <Label fx:id="menu" layoutX="14.0" layoutY="23.0" prefHeight="22.0" prefWidth="73.0" styleClass="btn" stylesheets="@Design.css" text="Menu">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -203,7 +203,7 @@
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="menuBack" layoutX="14.0" layoutY="23.0" text="Menu" textFill="#5b5353">
+                        <Label fx:id="menuBack" layoutX="14.0" layoutY="23.0" styleClass="btn" stylesheets="@Design.css" text="Menu" textFill="#5b5353">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

@@ -2,9 +2,9 @@ white-bg{
     -fx-background-color: #fff;
 }
 .btn{
-    -fx-background-color: linear-gradient(to bottom right,#A91D3A,#ae2121);
+    -fx-background-color: linear-gradient(to bottom right,#d9343a,#ae2121);
     -fx-cursor: hand;
-    -fx-text-fill: #fff;
+    -fx-text-fill: #000;
     -fx-font-size: 14px;
     -fx-font-family: "Arial";
 }
@@ -21,9 +21,9 @@ white-bg{
 }
 
 .menubtn{
-    -fx-background-color: #A91D3A;
+    -fx-background-color: #d9343a;
     -fx-cursor: hand;
-    -fx-text-fill: #867979;
+    -fx-text-fill: #e1e2e3;
     -fx-font-size: 14px;
     -fx-font-family: "Roboto Bold";
 }

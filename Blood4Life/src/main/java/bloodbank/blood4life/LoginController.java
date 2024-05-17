@@ -177,13 +177,6 @@ public class LoginController implements Initializable {
     private String userEmail;
     private String userName;
 
-//    public void switchToHome(ActionEvent event) throws IOException {
-//        root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
     public void switchToVerifiedDonor(ActionEvent event) throws IOException {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("verifiedDonor.fxml"));
@@ -205,6 +198,21 @@ public class LoginController implements Initializable {
         stage.show();
     }
 
+    public void switchToRequestBlood(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("RequestBlood.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToFeed(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("Feed.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     public static Connection connectDB() {
         Connection con = null;
         try{
