@@ -1,5 +1,6 @@
 package bloodbank.blood4life;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.*;
@@ -8,18 +9,26 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import com.gluonhq.maps.MapPoint;
+import com.gluonhq.maps.MapView;
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.transform.Translate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javax.mail.Session;
@@ -35,6 +44,7 @@ import netscape.javascript.JSObject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class LoginController implements Initializable {
     @FXML
@@ -107,6 +117,12 @@ public class LoginController implements Initializable {
     private AnchorPane main_form;
 
     @FXML
+    private AnchorPane map_form;
+
+    @FXML
+    private Button map_backBtn;
+
+    @FXML
     private Label menu;
 
     @FXML
@@ -139,17 +155,62 @@ public class LoginController implements Initializable {
     @FXML
     private AnchorPane slider;
 
+    @FXML
+    private VBox map_show;
+    @FXML
+    private JFXButton homepage_verifiedDonor;
+
+    private final MapPoint Dhaka = new MapPoint(23.8041,90.4152);
+    private MapView mapView;
+
+
     private Connection con;
     private PreparedStatement prepare;
     private ResultSet rs;
     private Statement st;
     private String otp;
+//    Map map_back = new Map();
 
-    public Connection connectDB() {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    private String userEmail;
+    private String userName;
+
+//    public void switchToHome(ActionEvent event) throws IOException {
+//        root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+    public void switchToVerifiedDonor(ActionEvent event) throws IOException {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("verifiedDonor.fxml"));
+            Parent root = loader.load();
+            VerifiedDonor controller = loader.getController();
+            controller.setUserEmail(userEmail); // Pass the user email to the controller
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+    }
+
+    public void switchToMap(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("Map.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static Connection connectDB() {
         Connection con = null;
         try{
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/"+ "BloodManage","postgres","nawshedislam1");
+            con = DriverManager.getConnection("jdbc:postgresql://roundhouse.proxy.rlwy.net:14900/railway", "postgres", "HKkOQFcntFfleAvDkmZEYvucyBQclYCk");
+
             if(con != null){
                 System.out.println("Connected to database");
             }else{
@@ -162,38 +223,45 @@ public class LoginController implements Initializable {
     }
 
     public void login() throws SQLException {
-
         alertMessage alert = new alertMessage();
 
-        if(login_username.getText().isEmpty() || login_password.getText().isEmpty()) {
+        if (login_username.getText().isEmpty() && getPasswordField().getText().isEmpty()) {
             alert.errorMessage("Username and Password are Required");
-        }else{
-            String selectData = "SELECT username, password FROM userlist WHERE "
+        } else {
+            if(!login_username.getText().endsWith("@gmail.com")){
+                userName = login_username.getText();
+            }else{
+                userEmail = login_username.getText();
+            }
+            String selectData = "SELECT username,email,password FROM userlist WHERE "
                     + "(username = ? OR email=?) and password = ?";
             con = connectDB();
 
-            try{
+            try {
                 prepare = connectDB().prepareStatement(selectData);
                 prepare.setString(1, login_username.getText());
-                prepare.setString(2,login_username.getText());
-                prepare.setString(3, login_password.getText());
+                prepare.setString(2, login_username.getText()); // assuming username is used for email as well
+                prepare.setString(3, getPasswordField().getText());
                 rs = prepare.executeQuery();
-                if(rs.next()) {
-                    alert.successMessage("Login Successful");
+                if (rs.next()) {
                     login_form.setVisible(false);
                     forgot_form.setVisible(false);
                     signup_form.setVisible(false);
                     homepage_form.setVisible(true);
-                }else{
+                } else {
                     alert.errorMessage("Incorrect Username or Password");
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e);
             }
         }
-
-
     }
+
+    private TextField getPasswordField() {
+        return login_showPassword.isVisible() ? login_showPassword : login_password;
+    }
+
+
 
     public void  showPassword() throws SQLException {
         if(login_selectShowPassword.isSelected()){
@@ -290,7 +358,7 @@ public class LoginController implements Initializable {
         props.put("mail.smtp.port", "587");
 
         Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
+                new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication("teratura961@gmail.com", "wmry avum fmml axoa");
                     }
@@ -314,7 +382,12 @@ public class LoginController implements Initializable {
         }
 
     }
-
+    public void showHomepageForm() {
+        homepage_form.setVisible(true);
+        login_form.setVisible(false);
+        signup_form.setVisible(false);
+        forgot_form.setVisible(false);
+    }
     public void verifyOTP(){
         alertMessage alert = new alertMessage();
         if(forgot_OTP.getText().isEmpty()) {
@@ -362,10 +435,25 @@ public class LoginController implements Initializable {
             forgot_form.setVisible(false);
             signup_form.setVisible(false);
             login_form.setVisible(true);
+        }
+        else if(event.getSource() == homepage_findDonorNearYou){
+            signup_form.setVisible(false);
+            login_form.setVisible(false);
+            forgot_form.setVisible(false);
+            map_form.setVisible(true);
+            homepage_form.setVisible(false);
 
-
+        }else if(event.getSource() == map_backBtn){
+            signup_form.setVisible(false);
+            login_form.setVisible(false);
+            forgot_form.setVisible(false);
+            map_form.setVisible(false);
+            homepage_form.setVisible(true);
         }
     }
+
+
+
 
     private String[] BGList = {"A+","A-","B+","B-","AB+","AB-","O+","O-"};
     public void sBG() {
@@ -383,40 +471,20 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     //TOdo
         sBG();
-        slider.setTranslateX(-215); // Hide the slider initially
-
-        menu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            if (!isMenuVisible) {
-                System.out.println("Heda");// If menu is not visible, slide out from the left
-                slide.setToX(0);
-                menu.setVisible(false);
-                menuBack.setVisible(true);
-                isMenuVisible = true;
-            } else { // If menu is visible, slide in to the left
-                slide.setToX(-215);
-                menu.setVisible(true);
-                menuBack.setVisible(false);
-                isMenuVisible = false;
-            }
-            slide.play();
-        });
-
-        menuBack.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(-215); // Slide out to the left
-            slide.play();
-
-            menu.setVisible(true);
-            menuBack.setVisible(false);
-            isMenuVisible = false;
-        });
-
+        addMapViewToVBox();
     }
+    private void addMapViewToVBox() {
+        mapView = createMapView();
+        map_show.getChildren().add(mapView);
+        VBox.setVgrow(mapView, Priority.ALWAYS);
+    }
+
+    private MapView createMapView() {
+        MapView mapView = new MapView();
+        mapView.setCenter(Dhaka);
+        mapView.setPrefSize(400, 500);
+        mapView.setZoom(10);
+        return mapView;
+    }
+
 }

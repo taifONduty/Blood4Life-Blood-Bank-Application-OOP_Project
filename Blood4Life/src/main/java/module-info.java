@@ -7,8 +7,10 @@ module bloodbank.blood4life {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires java.desktop;
-    requires java.mail;
     requires jdk.jsobject;
+    requires javax.mail.api;
+    requires com.gluonhq.maps;
+    requires com.jfoenix;
 
     opens bloodbank.blood4life to javafx.fxml;
     exports bloodbank.blood4life;
