@@ -21,12 +21,9 @@ white-bg{
 }
 
 .menubtn{
-    -fx-background-color: #d9343a;
+    -fx-background-color: #2c2c2c;
     -fx-cursor: hand;
     -fx-text-fill: #e1e2e3;
     -fx-font-size: 14px;
     -fx-font-family: "Roboto Bold";
-}
-.menubtn:hover{
-    -fx-background-color: linear-gradient(to bottom right,#c23a3a,#A92D4F); ;
 }

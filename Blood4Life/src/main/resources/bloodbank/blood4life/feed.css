@@ -1,0 +1,50 @@
+white-bg{
+    -fx-background-color: #fff;
+}
+.holder{
+    -fx-background-color: linear-gradient(to bottom right,#3e3e3e,#2a2626);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-font-family: "DejaVu Serif";
+    
+}
+.holder:hover{
+    -fx-text-fill: #ff0000;
+}
+.btn{
+    -fx-background-color: linear-gradient(to bottom right,#d9343a,#ae2121);
+    -fx-cursor: hand;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-family: "DejaVu Serif";
+}
+.btn:hover{
+    -fx-background-color: linear-gradient(to bottom right,#c23a3a,#a50024); ;
+}
+
+.pane{
+    -fx-background-color: linear-gradient(to bottom right,#9b1f23,#680606);
+    -fx-cursor: hand;
+
+}
+
+
+.menubtn{
+    -fx-background-color: #770004;
+    -fx-cursor: hand;
+    -fx-text-fill: #e1e2e3;
+    -fx-font-size: 14px;
+    -fx-font-family: "Roboto Bold";
+}
+
+.text{
+    -fx-background-color: linear-gradient(to bottom right,#3e3e3e,#2a2626); ;
+    -fx-cursor: hand;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-family: "DejaVu Serif";
+}
+.text:hover{
+    -fx-text-fill: #ff0000;
+}
