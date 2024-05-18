@@ -31,7 +31,12 @@ public class VerifiedDonor {
     private TextField verifiedDonor_NIDNumber;
 
     @FXML
+    private TextField verifiedDonor_phoneNumber;
+
+    @FXML
     private Button verifiedDonor_proceedBtn;
+
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -62,19 +67,31 @@ public class VerifiedDonor {
     public void beADonor(ActionEvent event) throws IOException {
         long nidNumber = Long.parseLong(verifiedDonor_NIDNumber.getText());
         String address = verifiedDonor_Address.getText();
-
+        String phoneNumber = verifiedDonor_phoneNumber.getText();
+        if (address.isEmpty() || phoneNumber.isEmpty()) {
+            System.out.println("Address or phone number is empty.");
+            return;
+        }
         Donor donor = new Donor();
+        donor.setPhoneNumber(phoneNumber);
         donor.setNidNumber(nidNumber);
         donor.setAddress(address);
-        donor.setEmail(userEmail);  // Set the email for the donor
+        donor.setEmail(userEmail);
 
         try {
             if(donor.updateDonorDetails()){
                 System.out.println("Donor successfully updated");
-            }else{
+            } else {
                 System.out.println("Donor could not be updated");
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid NID number format: " + e.getMessage());
+            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
             e.printStackTrace();
         }
     }

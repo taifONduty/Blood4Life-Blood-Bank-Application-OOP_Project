@@ -39,6 +39,9 @@ public class RequestBloodController {
     private TextField nameField;
 
     @FXML
+    private TextField requestBlood_description;
+
+    @FXML
     private Button submitBtn;
     private Connection con;
     private PreparedStatement prepare;
@@ -55,15 +58,15 @@ public class RequestBloodController {
         String bloodType = bloodTypeField.getText();
         String hospital = hospitalField.getText();
         String contact = contactField.getText();
-
+        String description = requestBlood_description.getText();
         // Add to BloodRequestService
-        BloodRequest request = new BloodRequest(name, bloodType, hospital, contact);
+        BloodRequest request = new BloodRequest(name, bloodType, hospital, contact , description);
         bloodRequestService.addBloodRequest(request);
 
         try {
 //            con = LoginController.connectDB();
             con = Core.User.connectDB();
-            String insertData = "INSERT INTO feed1 " + "(name, blood, hospital, contact) " + "VALUES (?, ?, ?, ?)";
+            String insertData = "INSERT INTO feed1 " + "(name, blood, hospital, contact,description) " + "VALUES (?, ?, ?, ?, ?)";
 
             prepare = con.prepareStatement(insertData);
 
@@ -71,6 +74,7 @@ public class RequestBloodController {
             prepare.setString(2, bloodType);
             prepare.setString(3, hospital);
             prepare.setString(4, contact);
+            prepare.setString(5, description);
 
             System.out.println("Added");
             prepare.executeUpdate();
@@ -85,6 +89,7 @@ public class RequestBloodController {
         bloodTypeField.clear();
         hospitalField.clear();
         contactField.clear();
+        requestBlood_description.clear();
     }
 
     public void switchToHome(ActionEvent event) throws IOException {

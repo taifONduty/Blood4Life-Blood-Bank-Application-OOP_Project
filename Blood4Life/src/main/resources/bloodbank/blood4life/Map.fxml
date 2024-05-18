@@ -7,17 +7,33 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="526.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bloodbank.blood4life.MapController">
+<AnchorPane prefHeight="622.0" prefWidth="943.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bloodbank.blood4life.MapController">
    <children>
-      <AnchorPane fx:id="map_form" layoutX="200.0" layoutY="79.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="map_form" layoutX="200.0" layoutY="79.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1e1d1c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fx:id="map_show" layoutX="334.0" layoutY="53.0" prefHeight="456.0" prefWidth="493.0" />
-            <Button fx:id="map_backBtn" layoutX="748.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="31.0" prefWidth="79.0" text="Back" />
-            <Label layoutX="121.0" layoutY="18.0" prefHeight="24.0" prefWidth="79.0" text="Find Donor" />
-            <ComboBox fx:id="list_BG" layoutX="14.0" layoutY="59.0" prefHeight="25.0" prefWidth="293.0" promptText="Select Blood Group" />
-            <TextField fx:id="find_hospitalName" layoutX="14.0" layoutY="103.0" prefHeight="25.0" prefWidth="293.0" promptText="Hospital Name" />
-            <ListView fx:id="find_list" layoutX="17.0" layoutY="140.0" prefHeight="373.0" prefWidth="293.0" />
+            <VBox fx:id="map_show" layoutX="425.0" layoutY="59.0" prefHeight="515.0" prefWidth="506.0" />
+            <Button fx:id="map_backBtn" layoutX="17.0" layoutY="584.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="24.0" prefWidth="85.0" styleClass="menubtn" stylesheets="@Design.css" text="Back" />
+            <Label layoutX="165.0" layoutY="21.0" prefHeight="24.0" prefWidth="85.0" text="Find Donor" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <ComboBox fx:id="list_BG" layoutX="17.0" layoutY="59.0" prefHeight="25.0" prefWidth="381.0" promptText="Select Blood Group" styleClass="menubtn" stylesheets="@Design.css" />
+            <TextField fx:id="find_hospitalName" layoutX="17.0" layoutY="103.0" prefHeight="25.0" prefWidth="381.0" promptText="Hospital Name" style="-fx-background-color: GREY;" styleClass="textfield" stylesheets="@Design.css">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <ListView fx:id="find_list" layoutX="17.0" layoutY="145.0" prefHeight="429.0" prefWidth="381.0" style="-fx-background-color: GREY;" />
+            <Label layoutX="638.0" layoutY="21.0" prefHeight="24.0" prefWidth="95.0" text="Find on Map" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" layoutX="686.0" layoutY="45.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="100.0" layoutX="207.0" layoutY="45.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="-100.0" endY="454.0" layoutX="511.0" layoutY="120.0" startX="-100.0" startY="-61.0" stroke="WHITE" />
          </children>
       </AnchorPane>
    </children>

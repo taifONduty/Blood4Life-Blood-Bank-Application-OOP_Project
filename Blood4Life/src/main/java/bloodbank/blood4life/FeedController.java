@@ -35,15 +35,16 @@ public class FeedController {
     public void initialize() {
         // Retrieve data from database and populate ListView
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
-            String sql = "SELECT name, blood, hospital, contact FROM feed1";
+            String sql = "SELECT name, blood, hospital, contact, description FROM feed1";
             try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
                 while (rs.next()) {
                     String name = rs.getString("name");
                     String blood = rs.getString("blood");
                     String hospital = rs.getString("hospital");
                     String contact = rs.getString("contact");
+                    String description = rs.getString("description");
 
-                    BloodRequest request = new BloodRequest(name, blood, hospital, contact);
+                    BloodRequest request = new BloodRequest(name, blood, hospital, contact , description);
                     feedListView.getItems().add(request.toString());
                 }
             }

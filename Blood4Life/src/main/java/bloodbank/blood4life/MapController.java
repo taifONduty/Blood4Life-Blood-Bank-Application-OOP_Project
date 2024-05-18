@@ -96,9 +96,9 @@ public class MapController {
         ObservableList<String> donors = FXCollections.observableArrayList();
         String query;
         if (bloodGroup == null || bloodGroup.isEmpty()) {
-            query = "SELECT username, address, nid_number FROM userlist WHERE nid_number IS NOT NULL AND address IS NOT NULL";
+            query = "SELECT username, address, phonenumber FROM userlist WHERE nid_number IS NOT NULL AND address IS NOT NULL";
         } else {
-            query = "SELECT username, address, nid_number FROM userlist WHERE bg = ? AND nid_number IS NOT NULL AND address IS NOT NULL";
+            query = "SELECT username, address, phonenumber FROM userlist WHERE bg = ? AND nid_number IS NOT NULL AND address IS NOT NULL";
         }
 
         try (Connection conn = Core.User.connectDB();
@@ -113,7 +113,7 @@ public class MapController {
             System.out.println("Query executed: " + query);
 
             while (rs.next()) {
-                String donor = "Username: " + rs.getString("username") + ", Address: " + rs.getString("address") + ", NID: " + rs.getString("nid_number");
+                String donor = "Name: " + rs.getString("username") + "\nAddress: " + rs.getString("address") + ", Contact Number: " + rs.getString("phonenumber");
                 donors.add(donor);
             }
 
