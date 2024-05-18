@@ -51,6 +51,7 @@ public class MapController {
     private double longitude;
     private final MapPoint point = new MapPoint(23.8041, 90.4152);
     private String[] BGList = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+    private String userEmail;
 
     public void sBG() {
         List<String> list = new ArrayList<>();
@@ -61,10 +62,12 @@ public class MapController {
 
     public void initialize() {
         sBG();
+
         MapView mapView = createMapView();
         map_show.getChildren().add(mapView);
         VBox.setVgrow(mapView, Priority.ALWAYS);
-        String userEmail = UserSession.getInstance().getUserEmail();
+
+        userEmail = UserSession.getInstance().getUserEmail();
         System.out.println("MapController initialized with user email: " + userEmail);
 
         find_list.setItems(getDonorsByBloodGroup(null));
@@ -87,7 +90,7 @@ public class MapController {
     public MapView createMapView() {
         MapView mapView = new MapView();
         mapView.setPrefSize(420, 420);
-        mapView.setZoom(10);
+        mapView.setZoom(15);
         mapView.flyTo(0, point, 0.1);
         return mapView;
     }
@@ -126,6 +129,7 @@ public class MapController {
 
     private void showDonorProfile(String donorDetails) {
         try {
+            System.out.println(userEmail);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("DonorProfile.fxml"));
             Parent root = loader.load();
 
