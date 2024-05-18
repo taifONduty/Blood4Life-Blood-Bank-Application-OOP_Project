@@ -33,13 +33,14 @@ white-bg{
     -fx-background-color: linear-gradient(to bottom right,#2d2d2d,#201d1d); ;
 }
 .submit{
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #312f2f;
+    -fx-background-color: #9A0000;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
     -fx-font-size: 16px;
     -fx-font-family: "Times New Roman";
     
 }
 .submit:hover{
-    -fx-background-color: linear-gradient(to bottom right,#c23a3a,#a50024); ;
+    -fx-background-color: linear-gradient(to bottom right,#c94646,#a50000); ;
     -fx-text-fill:#dadada ;
 }

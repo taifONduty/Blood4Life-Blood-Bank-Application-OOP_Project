@@ -29,7 +29,7 @@
                         <Font name="DejaVu Serif Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Button layoutX="106.0" layoutY="314.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="88.0" style="-fx-font-size: 15;" styleClass="submit" stylesheets="@beDonor.css" text="Button" textAlignment="CENTER" textOverrun="CLIP" />
+                  <Button layoutX="106.0" layoutY="314.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="88.0" style="-fx-font-size: 16; -fx-font-weight: Bold;" styleClass="submit" stylesheets="@beDonor.css" text="Submit" textAlignment="CENTER" textOverrun="CLIP" />
                </children>
             </Pane>
             <Button fx:id="backBtn" layoutX="538.0" layoutY="364.0" mnemonicParsing="false" onAction="#switchToHome" styleClass="btn" stylesheets="@beDonor.css" text="Back" />
