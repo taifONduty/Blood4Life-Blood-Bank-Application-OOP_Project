@@ -11,10 +11,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
     <junit.version>5.10.0</junit.version>
-    <javafx.version>21</javafx.version>
   </properties>
 
   <repositories>
@@ -25,25 +22,20 @@
   </repositories>
 
   <dependencies>
-<!--    <dependency>-->
-<!--      <groupId>com.gluonhq</groupId>-->
-<!--      <artifactId>charm-glisten</artifactId>-->
-<!--      <version>6.0.7</version>-->
-<!--    </dependency>-->
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-controls</artifactId>
-      <version>${javafx.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-fxml</artifactId>
-      <version>${javafx.version}</version>
-    </dependency>
     <dependency>
       <groupId>com.jfoenix</groupId>
       <artifactId>jfoenix</artifactId>
       <version>9.0.10</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>21</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>21</version>
     </dependency>
     <dependency>
       <groupId>com.gluonhq</groupId>
@@ -56,14 +48,14 @@
       <version>1.6.2</version>
     </dependency>
     <dependency>
-      <groupId>com.sun.mail</groupId>
-      <artifactId>javax.mail</artifactId>
-      <version>1.6.2</version>
-    </dependency>
-    <dependency>
       <groupId>com.gluonhq</groupId>
       <artifactId>connect</artifactId>
       <version>1.4.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>1.6.2</version>
     </dependency>
     <dependency>
       <groupId>com.gluonhq.attach</groupId>
@@ -117,8 +109,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.11.0</version>
         <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
+          <source>21</source>
+          <target>21</target>
         </configuration>
       </plugin>
       <plugin>
@@ -129,7 +121,13 @@
           <execution>
             <id>default-cli</id>
             <configuration>
-              <mainClass>Core.ChatBox</mainClass>
+              <mainClass>bloodbank.blood4life.HelloApplication</mainClass>
+              <launcher>app</launcher>
+              <jlinkZipName>app</jlinkZipName>
+              <jlinkImageName>app</jlinkImageName>
+              <noManPages>true</noManPages>
+              <stripDebug>true</stripDebug>
+              <noHeaderFiles>true</noHeaderFiles>
             </configuration>
           </execution>
         </executions>
