@@ -32,3 +32,14 @@ white-bg{
 .text:hover{
     -fx-background-color: linear-gradient(to bottom right,#2d2d2d,#201d1d); ;
 }
+.submit{
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #312f2f;
+    -fx-font-size: 16px;
+    -fx-font-family: "Times New Roman";
+    
+}
+.submit:hover{
+    -fx-background-color: linear-gradient(to bottom right,#c23a3a,#a50024); ;
+    -fx-text-fill:#dadada ;
+}

@@ -41,7 +41,7 @@ white-bg{
 .text{
     -fx-background-color: linear-gradient(to bottom right,#3e3e3e,#2a2626); ;
     -fx-cursor: hand;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #b42828;
     -fx-font-size: 16px;
     -fx-font-family: "DejaVu Serif";
 }
