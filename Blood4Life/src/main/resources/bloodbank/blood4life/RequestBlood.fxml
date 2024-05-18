@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,15 +17,12 @@
                <font>
                   <Font size="15.0" />
                </font></TextField>
-            <TextField fx:id="contactField" layoutX="28.0" layoutY="273.0" prefHeight="45.0" prefWidth="424.0" promptText="Contact Number" style="-fx-background-color: GREY;" styleClass="textfield" stylesheets="@Design.css">
-               <font>
-                  <Font size="15.0" />
-               </font></TextField>
+            <ComboBox fx:id="bloodTypeField" layoutX="28.0" layoutY="145.0" prefHeight="35.0" prefWidth="424.0" promptText="Select Blood Type" styleClass="menubtn" stylesheets="@Design.css" />
             <TextField fx:id="hospitalField" layoutX="28.0" layoutY="205.0" prefHeight="45.0" prefWidth="424.0" promptText="Hospital " style="-fx-background-color: GREY;" styleClass="textfield" stylesheets="@Design.css">
                <font>
                   <Font size="15.0" />
                </font></TextField>
-            <TextField fx:id="bloodTypeField" layoutX="28.0" layoutY="139.0" prefHeight="45.0" prefWidth="424.0" promptText="Blood Type" style="-fx-background-color: GREY;" styleClass="textfield" stylesheets="@Design.css">
+            <TextField fx:id="contactField" layoutX="28.0" layoutY="273.0" prefHeight="45.0" prefWidth="424.0" promptText="Contact Number" style="-fx-background-color: GREY;" styleClass="textfield" stylesheets="@Design.css">
                <font>
                   <Font size="15.0" />
                </font></TextField>
