@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="427.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bloodbank.blood4life.OrganizationController">
+    <SplitPane dividerPositions="0.25109170305676853">
+        <!-- Left side: List of organizations and search box -->
+        <VBox>
+            <TextField fx:id="searchBox" onKeyReleased="#searchOrganizations" promptText="Search organization..." />
+            <ListView fx:id="organizationListView" onMouseClicked="#displayOrganizationDetails" />
+        </VBox>
+
+        <!-- Right side: Organization details -->
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <Label style="-fx-font-size: 18px;" text="Organization Details" />
+            <HBox prefHeight="52.0" prefWidth="663.0" spacing="10">
+                <Label text="Name:" />
+                <TextField fx:id="orgName" editable="false" prefHeight="29.0" prefWidth="603.0" />
+            </HBox>
+            <HBox prefHeight="57.0" prefWidth="663.0" spacing="10">
+                <Label prefHeight="17.0" prefWidth="65.0" text="Address:" />
+                <TextField fx:id="orgAddress" editable="false" prefHeight="32.0" prefWidth="560.0" />
+            </HBox>
+            <HBox prefHeight="51.0" prefWidth="663.0" spacing="10">
+                <Label text="Phone:" />
+                <TextField fx:id="orgPhone" editable="false" prefHeight="25.0" prefWidth="275.0" />
+            </HBox>
+            <HBox prefHeight="84.0" prefWidth="663.0" spacing="10">
+            <children>
+                   <Label text="Email:" />
+                   <TextField fx:id="orgEmail" editable="false" prefHeight="25.0" prefWidth="528.0" />
+            </children>
+            </HBox>
+            <!-- Add more fields as necessary -->
+        </VBox>
+    </SplitPane>
+</VBox>

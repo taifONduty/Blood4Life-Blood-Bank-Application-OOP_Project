@@ -1,93 +1,58 @@
 package Core;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Date;
 
-public class Donor {
-    private String bloodType;
-    private LocalDate donationDate;
-    private long daysSinceLastDonation;
-    private String location;
-    public List<String> eligible;
-    public boolean ch;
+public class Donor extends User {
+    private long nidNumber;
+    private String address;
 
-    // Constructor
-    public Donor(String bloodType, LocalDate donationDate,String location) {
-
-        this.bloodType = bloodType;
-        this.donationDate = donationDate;
-        this.location=location;
-        this.daysSinceLastDonation = calculateDaysSinceDonation();
-        this.eligible=getEligibleBloodTypes() ;
-        this.ch=canDonate(daysSinceLastDonation);
-    }
-    public void print()
-    {
-        System.out.println("Blood Type: " + bloodType);
-        System.out.println("Donation Date: " + donationDate);
-        System.out.println("Location: " + location);
-        System.out.println("days Since last donation: " + daysSinceLastDonation);
-        System.out.println("Can he donate?: " + ch);
-        System.out.println("Blood Type he can donate to: " + eligible);
+    // Default constructor
+    public Donor() {
+        super();
     }
 
-    // Method to calculate the difference in days between the current date and the donation date
-    private long calculateDaysSinceDonation() {
-        LocalDate currentDate = LocalDate.now();
-        return currentDate.toEpochDay() - donationDate.toEpochDay();
+    // Parameterized constructor
+    public Donor(String username, String email, String password, String bloodGroup, Date date, long nidNumber, String address) {
+        super(username, email, password, bloodGroup, date);
+        this.nidNumber = nidNumber;
+        this.address = address;
     }
 
-    // Method to determine compatible blood types based on the donor's blood type
-    public List<String> getEligibleBloodTypes() {
-        List<String> eligibleBloodTypes = new ArrayList<>();
-        char bloodGroup = bloodType.charAt(0);
-        char rhFactor = bloodType.charAt(1);
-
-        // Determine compatible blood types based on the ABO blood group system
-
-        switch (bloodGroup) {
-            case 'A':
-                if(rhFactor=='+' ||rhFactor=='-'){
-                    eligibleBloodTypes.add("A" + rhFactor);
-                    eligibleBloodTypes.add("AB" + rhFactor);
-                }
-                else{
-                    rhFactor=bloodType.charAt(2);
-                    eligibleBloodTypes.add("AB" + rhFactor);
-                }
-                break;
-            case 'B':
-                eligibleBloodTypes.add("B" + rhFactor);
-                eligibleBloodTypes.add("AB" + rhFactor);
-                break;
-            case 'O':
-                eligibleBloodTypes.add("A" + rhFactor);
-                eligibleBloodTypes.add("B" + rhFactor);
-                eligibleBloodTypes.add("AB" + rhFactor);
-                eligibleBloodTypes.add("O" + rhFactor);
-                break;
-
-        }
-
-        return eligibleBloodTypes;
+    // Getters and Setters
+    public long getNidNumber() {
+        return nidNumber;
     }
 
-    // Getter method for daysSinceLastDonation
-    public long getDaysSinceLastDonation() {
-        return daysSinceLastDonation;
+    public void setNidNumber(long nidNumber) {
+        this.nidNumber = nidNumber;
     }
-    public boolean canDonate(long daysSinceLastDonation)
-    {
-        if(daysSinceLastDonation>=120)
-        {
-            return true;
-        }
-        else
-        {
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    // Method to update donor details in the database
+    public boolean updateDonorDetails() throws SQLException {
+        String updateQuery = "UPDATE userlist SET nid_number = ?, address = ? WHERE email = ?";
+        try (Connection con = Core.User.connectDB();
+             PreparedStatement prepare = con.prepareStatement(updateQuery)) {
+
+            prepare.setLong(1, this.nidNumber);
+            prepare.setString(2, this.address);
+            prepare.setString(3, this.getEmail());
+
+            int rowsAffected = prepare.executeUpdate();
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
-
-    // Other methods and getters/setters as needed
 }

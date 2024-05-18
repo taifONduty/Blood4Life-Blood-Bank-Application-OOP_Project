@@ -20,7 +20,7 @@
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0" stylesheets="@Design.css">
          <children>
-            <AnchorPane fx:id="login_form" layoutY="3.0" prefHeight="622.0" prefWidth="943.0" style="-fx-background-color: #1e1d1c;">
+            <AnchorPane fx:id="login_form" layoutY="3.0" prefHeight="622.0" prefWidth="943.0" style="-fx-background-color: #1e1d1c;" visible="false">
                <children>
                   <Icon content="ACCOUNT_CIRCLE" layoutX="704.0" layoutY="43.0" prefHeight="68.0" prefWidth="86.0" visible="false" AnchorPane.bottomAnchor="498.0" AnchorPane.leftAnchor="704.0" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="43.0" />
                   <Label layoutX="697.0" layoutY="117.0" style="-fx-text-fill: White;" text="Sign In Account" textFill="#e12929">
@@ -88,11 +88,11 @@
                   <Button fx:id="forgot_sendOTP" layoutX="608.0" layoutY="205.0" mnemonicParsing="false" onAction="#sendOTP" prefHeight="30.0" prefWidth="276.0" styleClass="btn" text="Send OTP" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="homepage_form" layoutX="7.0" layoutY="7.0" prefHeight="625.0" prefWidth="943.0" style="-fx-background-color: #1e1d1c;" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="homepage_form" layoutX="7.0" layoutY="7.0" prefHeight="625.0" prefWidth="943.0" style="-fx-background-color: #1e1d1c;" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Button fx:id="homepage_findDonorNearYou" layoutX="364.0" layoutY="344.0" mnemonicParsing="false" onAction="#switchToMap" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="FInd Donor Near You" />
                   <Button fx:id="homepage_feed" layoutX="656.0" layoutY="97.0" mnemonicParsing="false" onAction="#switchToFeed" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Feed" />
-                  <Button fx:id="homepage_organizations" layoutX="364.0" layoutY="220.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Organizations">
+                  <Button fx:id="homepage_organizations" layoutX="364.0" layoutY="220.0" mnemonicParsing="false" onAction="#switchToOrganizations" prefHeight="85.0" prefWidth="215.0" styleClass="btn" stylesheets="@Design.css" text="Organizations">
                      <font>
                         <Font name="Bookman Old Style" size="12.0" />
                      </font></Button>

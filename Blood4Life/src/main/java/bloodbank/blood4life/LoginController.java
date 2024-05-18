@@ -152,6 +152,14 @@ public class LoginController implements Initializable {
         stage.show();
     }
 
+    public void switchToOrganizations(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("Organization.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void login() throws SQLException {
         alertMessage alert = new alertMessage();
         if (login_username.getText().isEmpty() && getPasswordField().getText().isEmpty()) {

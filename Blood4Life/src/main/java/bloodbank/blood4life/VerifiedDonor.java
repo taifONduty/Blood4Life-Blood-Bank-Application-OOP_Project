@@ -1,5 +1,6 @@
 package bloodbank.blood4life;
 
+import Core.Donor;
 import Core.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,10 +35,6 @@ public class VerifiedDonor {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private Connection con;
-    private ResultSet rs;
-    private Statement st;
-    private PreparedStatement prepare;
     private String userEmail;
 
     public void initialize() {
@@ -66,24 +63,19 @@ public class VerifiedDonor {
         long nidNumber = Long.parseLong(verifiedDonor_NIDNumber.getText());
         String address = verifiedDonor_Address.getText();
 
+        Donor donor = new Donor();
+        donor.setNidNumber(nidNumber);
+        donor.setAddress(address);
+        donor.setEmail(userEmail);  // Set the email for the donor
+
         try {
-            storeDonorData(userEmail, nidNumber, address);
+            if(donor.updateDonorDetails()){
+                System.out.println("Donor successfully updated");
+            }else{
+                System.out.println("Donor could not be updated");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private void storeDonorData(String userEmail, long nidNumber, String address) throws SQLException {
-        con = Core.User.connectDB();
-        String insertData = "UPDATE userlist SET nid_number = ?, address = ? WHERE email = ?";
-        prepare = con.prepareStatement(insertData);
-
-        prepare.setLong(1, nidNumber);
-        prepare.setString(2, address);
-        prepare.setString(3, userEmail);
-
-        prepare.executeUpdate();
-        prepare.close();
-        con.close();
     }
 }
