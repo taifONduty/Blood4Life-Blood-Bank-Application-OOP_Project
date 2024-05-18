@@ -2,16 +2,55 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="540.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bloodbank.blood4life.VerifiedDonor">
    <children>
-      <AnchorPane fx:id="verfiedDonor_form" layoutX="327.0" layoutY="161.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="verfiedDonor_form" layoutX="327.0" layoutY="161.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2f2f2f2f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="verifiedDonor_backBtn" layoutX="752.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="26.0" prefWidth="87.0" text="back" />
-            <TextField fx:id="verifiedDonor_NIDNumber" layoutX="37.0" layoutY="111.0" prefHeight="49.0" prefWidth="286.0" promptText="NID Number" />
-            <TextField fx:id="verifiedDonor_Address" layoutX="37.0" layoutY="215.0" prefHeight="49.0" prefWidth="286.0" promptText="Address" />
-            <Button fx:id="verifiedDonor_proceedBtn" layoutX="131.0" layoutY="307.0" mnemonicParsing="false" onAction="#beADonor" prefHeight="25.0" prefWidth="99.0" text="Proceed" />
+            <ImageView fitHeight="541.0" fitWidth="478.0" layoutX="375.0">
+               <image>
+                  <Image url="@password.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="verifiedDonor_backBtn" layoutX="14.0" layoutY="503.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="26.0" prefWidth="87.0" styleClass="text" stylesheets="@beDonor.css" text="back" />
+            <TextField fx:id="verifiedDonor_NIDNumber" layoutX="38.0" layoutY="190.0" prefHeight="49.0" prefWidth="286.0" promptText="NID Number" styleClass="holder" stylesheets="@beDonor.css" />
+            <TextField fx:id="verifiedDonor_Address" layoutX="38.0" layoutY="271.0" prefHeight="49.0" prefWidth="286.0" promptText="Address" styleClass="holder" stylesheets="@beDonor.css" />
+            <Button fx:id="verifiedDonor_proceedBtn" layoutX="115.0" layoutY="344.0" mnemonicParsing="false" onAction="#beADonor" prefHeight="35.0" prefWidth="131.0" styleClass="btn" stylesheets="@beDonor.css" text="Proceed" />
+            <AnchorPane layoutX="603.0" layoutY="239.0" />
+            <Text fontSmoothingType="LCD" layoutX="69.0" layoutY="112.0" lineSpacing="5.0" mouseTransparent="true" stroke="WHITE" strokeLineCap="ROUND" strokeType="OUTSIDE" text="Donate blood&#10;Save life!" textAlignment="CENTER">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="30.0" />
+               </font>
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.02857142857142857">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.05092592537403107" blue="0.05092592537403107" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.5">
+                           <color>
+                              <Color red="0.8421052694320679" green="0.03898635506629944" blue="0.03898635506629944" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.6052631735801697" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Text>
          </children>
       </AnchorPane>
    </children>

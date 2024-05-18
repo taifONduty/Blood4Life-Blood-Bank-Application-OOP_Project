@@ -2,9 +2,9 @@ white-bg{
     -fx-background-color: #fff;
 }
 .btn{
-    -fx-background-color: linear-gradient(to bottom right,#d9343a,#ae2121);
+    -fx-background-color: linear-gradient(to bottom right,#ff0008,#ae2121);
     -fx-cursor: hand;
-    -fx-text-fill: #000;
+    -fx-text-fill: #fdfdfd;
     -fx-font-size: 14px;
     -fx-font-family: "Arial";
 }
@@ -12,7 +12,7 @@ white-bg{
     -fx-background-color: linear-gradient(to bottom right,#c23a3a,#A92D4F); ;
 }
 .textfield{
-    -fx-border-color: #000;
+    -fx-border-color: #000000;
     -fx-border-width: .5px;
 }
 .textfield:focused{
@@ -21,12 +21,9 @@ white-bg{
 }
 
 .menubtn{
-    -fx-background-color: #d9343a;
+    -fx-background-color: #2c2c2c;
     -fx-cursor: hand;
     -fx-text-fill: #e1e2e3;
     -fx-font-size: 14px;
     -fx-font-family: "Roboto Bold";
-}
-.menubtn:hover{
-    -fx-background-color: linear-gradient(to bottom right,#c23a3a,#A92D4F); ;
 }
