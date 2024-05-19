@@ -27,8 +27,20 @@
       <artifactId>jfoenix</artifactId>
       <version>21.0.0</version>
     </dependency>
-    <!-- Thanks for using https://jar-download.com -->
-
+    <dependency>
+      <groupId>com.gluonhq</groupId>
+      <artifactId>charm-glisten</artifactId>
+      <version>6.2.3</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/jar/charm-glisten-6.2.3.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.rationalityfrontline.workaround</groupId>
+      <artifactId>jfoenix</artifactId>
+      <version>21.0.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/jar/jfoenix-21.0.0.jar</systemPath>
+    </dependency>
     <dependency>
       <groupId>com.jfoenix</groupId>
       <artifactId>jfoenix</artifactId>
