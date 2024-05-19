@@ -30,3 +30,21 @@ white-bg{
 .menubtn:hover{
     -fx-background-color: linear-gradient(to bottom right,#c23a3a,#A92D4F); ;
 }
+
+.blood-donation-button {
+    background-color: #ff0000; /* Red background */
+    border: none; /* No border */
+    color: white; /* White text */
+    padding: 15px 25px; /* Padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Display as inline-block */
+    font-size: 16px; /* Font size */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+.blood-donation-button:hover {
+    background-color: #cc0000; /* Darker red */
+}
